@@ -1,4 +1,4 @@
-# 2. 열거형 타입 : 튜플
+# 2. 열거형 타입 : 튜플,,
 
 # 앞서 봤던 리스트와 달리 immutable...수정 불가능하다.
 # list와는 다르게 common sequence operation만 사용 가능
