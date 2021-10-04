@@ -1,7 +1,7 @@
 # sequence type : 열거형
 # 파이썬 standard library 를 애용
 
-# 1. 열거형 타입 : 리스트
+# 1. 열거형 타입 : 리스트.
 days = ["mon","tue","wed","thur","fri"] # 대괄호로 리스트 선언 후 요소들을 , 로 구분
 # 총 5개의 개별 스트링 값을 대괄호 안에 갖게 됨.
 # classs 'list'
