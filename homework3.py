@@ -59,7 +59,7 @@ set_url()
 #     print("That's not a valid answer")
 #     restart()
 
-
+#
 # def main():
 #   os.system('clear')
 #   print("Welcome to IsItDown.py!\nPlease write a URL or URLs you want to check. (separated by comma)")
