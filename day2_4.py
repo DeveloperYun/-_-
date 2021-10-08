@@ -17,7 +17,7 @@ pagination = indeed_soup.find("div", {"class":"pagination"})
 links = pagination.find_all('a')
 pages = []
 
-# 이렇게 걸러낸 리스트 안에 또 span이 있으므로 이를 리스트에 담아 추출.
+# 이렇게 걸러낸 리스트 안에 d또 span이 있으므로 이를 리스트에 담아 추출.
 for link in links[:-1]: #마지막 요소는 읽지 않겠다는 뜻
     #pages.append(link.find("span").string) # string만 가져오길 원함
     pages.append(int(link.string)) #string -> integer 변환
