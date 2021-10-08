@@ -28,3 +28,6 @@ for link in links[:-1]: #마지막 요소는 읽지 않겠다는 뜻
 max_page = pages[-1]
 print(max_page)
 
+#range - 입력한 수 만큼의 크기의 배열을 생성
+for n in range(max_page):
+    print(f"start={n *50}")
