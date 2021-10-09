@@ -1,40 +1,49 @@
+import os
 import requests
 from bs4 import BeautifulSoup
 
-print("Hello, please choose select a country by number:")
+os.system("clear")
 
-result = requests.get("https://www.iban.com/currency-codes")
-soup = BeautifulSoup(result.text, "html.parser")
-tr = soup.find_all('tr')
-tds = soup.find_all('td')
 
-data = []
+url = "https://www.iban.com/currency-codes"
 
-for tr in soup.find_all('tr'):
-    tds = list(tr.find_all('td'))
-    if tr.find_all('td'):
-        country = tds[0].text
-        currency = tds[1].text
-        code = tds[2].text
-        number = tds[3].text
-        data.append([country,currency,code,number])
 
-for i in range(len(data)):
-    print(f"# {i+1}", data[i][0])
-    i+=1
+countries = []
 
-def answer():
-    try:
-        answer_1 = int(input("Where are you from? Choose a country by number.\n #:"))
-        if 0 < answer_1 < 269:
-            print(data[answer_1-1][0])
-        elif answer_1 <1 or answer_1>268:
-            print("Choose from a number list.")
-            answer()
-    except:
-        print("This is not a number.")
-        answer()
+request = requests.get(url)
+soup = BeautifulSoup(request.text, "html.parser")
 
-    return answer_1
+table = soup.find("table")
+rows = table.find_all("tr")[1:]
 
-answer()
+for row in rows:
+  items = row.find_all("td")
+  name = items[0].text
+  code =items[2].text
+  if name and code:
+      country = {
+        'name':name.capitalize(),
+        'code': code
+      }
+      countries.append(country)
+
+
+def ask():
+  try:
+    choice = int(input("#: "))
+    if choice >= len(countries) or choice <0:
+      print("Choose a number from the list.")
+      ask()
+    else:
+      country = countries[choice]
+      print(f"You chose {country['name']}\nThe currency code is {country['code']}")
+  except ValueError:
+    print("That wasn't a number.")
+    ask()
+
+
+print("Hello! Please choose select a country by number:")
+for index, country in enumerate(countries):
+  print(f"#{index} {country['name']}")
+
+ask()
